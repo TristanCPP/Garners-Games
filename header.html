@@ -1,0 +1,99 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        header {
+            display: flex; /* Enable Flexbox */
+            align-items: center; /* Align items vertically */
+            justify-content: space-between; /* Space between the items */
+            padding: 10px; /* Padding around the entire header */
+        }
+
+        .logo-container {
+            flex-grow: 1; /* Allow the logo to grow as needed */
+            text-align: left; /* Align the logo text to the left */
+        }
+
+        .logo-container img {
+            height: 150px; /* Adjust the size as needed */
+            padding-left: 30px;
+        }
+
+        .console-image-container {
+            flex-grow: 1; /* Allow the console image to grow */
+            text-align: center; /* Center the console image */
+        }
+
+        .console-image-container img {
+            max-height: 150px; /* Adjust the size as needed */
+            padding-top: 30px;
+        }
+
+        .right-floating-div {
+            flex-grow: 1; /* Allow the shopping cart div to grow */
+            text-align: right; /* Align the shopping cart button to the right */
+        }
+        .right-floating-div{
+            float: right;
+            background-color: #0e2d3f;
+            color: #fff;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .console-image-container {
+            text-align: center; /* Center the image container */
+            padding: 10px 0; /* Add some padding above and below the image */
+        }
+
+        /* Ensure the image is responsive and scales with the width of its container */
+        .console-image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
+
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <h1>Garner's Games</h1>
+        <img src="images_folder/1b488802-fa88-439e-8c87-d29be7ea77b6 (1).jpg" alt="Garner's Games Logo" >
+    </div>
+    <div class="console-image-container">
+        <img src="images_folder/nintendo-nes-controller-black-and-gray-nintendo-entertainment-system-controller-png-clipart.jpg" alt="Gaming Console">
+    </div>
+    <div class="right-floating-div">
+
+    </div>
+</header>
+</body>
+</html>
+<div class="right-floating-div">
+    <button id="shoppingCartButton">View Shopping Cart</button>
+    <br>
+    <?php
+        if (isset($_SESSION["cart"])) {
+            echo("Shopping Cart Item(s): ". count($_SESSION["cart"]));
+        }
+        else{
+            echo ("Cart is Empty");
+        }
+?>
+
+    <script type="text/javascript">
+        document.getElementById('shoppingCartButton').addEventListener('click',
+            function ()
+            {
+                window.location.href = 'shoppingCart.php';
+            });
+    </script>
+</div>
+</body>
+</html>
